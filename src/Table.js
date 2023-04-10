@@ -7,7 +7,7 @@ export default function Table({canDel}) {
 
   
 
-    const {dataApi}=useMyContext()
+    const {dataApi,setToggle}=useMyContext()
     const [data,setData]=useState([])
     const sortval=useRef()
  
@@ -37,21 +37,30 @@ export default function Table({canDel}) {
         const url=`https://localhost:7105/api/Department?i=${id}`
  
         axios.delete(url).then(()=>{
-            alert("deleted")
+          setToggle((prev)=>!prev)
         }).catch((err)=>{
             alert(err.message)
         })
 
     }
     const change=(e,record)=>{
-
+      const element=document.getElementsByClassName(record.Id)
     if(e.target.checked){
 
      setCheckedData((prev)=>[...prev,record])
+    
+     for(let i=0;i<element.length;i++){
+      element[i].style.backgroundColor="grey"
+      element[i].style.color="white"
+     }
 
     }else{
       const filter=checkedData.filter((val)=>val!==record)
       setCheckedData([...filter])
+      for(let i=0;i<element.length;i++){
+        element[i].style.backgroundColor="white"
+        element[i].style.color="black"
+       }
    
     }
 
@@ -64,6 +73,9 @@ export default function Table({canDel}) {
       setCheckedColumn((prev)=>[...prev,dataColum])
      
 
+    }else{
+      const dataCol=checkedColumn.filter((valu)=>valu!==val)
+      setCheckedColumn(dataCol)
     }
 
    }
@@ -126,7 +138,7 @@ export default function Table({canDel}) {
                key={idx} >
              
                 {headers.map((h, i) => (
-                  <td key={i}>{rec[h]}</td>
+                  <td className={`${rec.Id}`} key={i}>{rec[h]}</td>
                 ))}
                 {canDel &&  <td className="redd" onClick={()=>deleteRecord(rec.Id)} style={{margin:"1rem"}}>delete</td>}
                 <input  onChange={(e)=>change(e,rec)}  className="inp" type="checkbox"/>
@@ -143,9 +155,9 @@ export default function Table({canDel}) {
       <SelectedTable dataSource={checkedData}/>
 
      <div>
-     <h1>selected column data : </h1>
+     { checkedColumn.length!==0 &&  <h1>selected column data : </h1>}
      <table>
-
+  
      <tr>
      {checkedColumn.map((val,idx)=>{
           return <tr key={idx}>

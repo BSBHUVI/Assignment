@@ -5,6 +5,7 @@ const MyContext = createContext(null);
 
 function DataContext({ children }) {
     const [dataApi,setDataApi]=useState([])
+    const [toggle,setToggle]=useState(false)
 
 
     const getdata=async()=>{
@@ -14,11 +15,11 @@ function DataContext({ children }) {
     }
 useEffect(()=>{
     getdata();
-},[])
+},[toggle])
 
 
   return (
-    <MyContext.Provider value={{ dataApi}}>
+    <MyContext.Provider value={{ dataApi,setToggle}}>
       {children}
     </MyContext.Provider>
   );
