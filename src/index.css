@@ -11,3 +11,114 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+td,th{
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 1rem;
+  border-collapse: collapse;
+}
+tr{
+  border: 2px solid black !important;
+  
+}
+table{
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.full{
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  flex-direction: column;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 75%;
+}
+input,button{
+flex: 1;
+padding: 0.7rem;
+}
+h1{
+
+  text-align: center;
+}
+.hello{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+
+}
+textarea{
+  width: 80%;
+  height: 30vh;
+  overflow: scroll;
+}
+input{
+  width: 50%;
+}
+
+
+
+.form{
+  width: 100%;
+  height: fit-content;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 3rem;
+}
+.container_search{
+  display: flex;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.redd{
+  background-color: red;
+  color: white;
+cursor: pointer;
+
+}
+.redd:hover{
+  opacity: 0.7;
+}
+
+.inp{
+  width: 3rem;
+  
+}
